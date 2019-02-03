@@ -55,5 +55,20 @@ module.exports = {
         catch(error){
             responseHandler.failure(req, res, 500, error);
         }
+    },
+
+    /**
+     * @author Vivek Sinha
+     * Computation of top performer is based on volume
+     * who ever has sum of all volume as max will be top perfomer
+     */
+    findTopPerformers: async (req, res) => {
+        try{
+            let topPerformers = await stocksHistoryDBHelper.findTopPerformers(10);
+            responseHandler.success(req, res, topPerformers);
+        }
+        catch(error){
+            responseHandler.failure(req, res, 500, error);
+        }
     }
 }

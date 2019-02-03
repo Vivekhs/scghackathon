@@ -19,8 +19,14 @@ stocksRouter.get('/:firstRecordId/:lastRecordId/:records', stocksHistoryControll
 
 /**
  * @author Vivek Sinhs
- * will return
+ * will return all listed companies for stocks
  */
 stocksRouter.get('/companies', stocksHistoryController.findAllCompanies);
+
+/**
+ * @author Vivek Sinhs
+ * Get top performing companies
+ */
+stocksRouter.get('/top_performers', stocksHistoryController.findTopPerformers);
 
 module.exports = stocksRouter;

@@ -12,5 +12,13 @@ export class StocksService {
   findStocks(reqData: StockFetch): Observable<Stock[]> {
     return this.http.get<Stock[]>
     (`/api/stocks/${reqData.firstRecordId}/${reqData.lastRecordId}/${reqData.records}?company=${reqData.company}`);
-}
+  }
+
+  findTopPerformers(): Observable<Stock[]> {
+    return this.http.get<Stock[]>('/api/stocks/top_performers');
+  }
+
+  getCompaniesList(): Observable<string[]> {
+    return this.http.get<string[]>('/api/stocks/companies');
+  }
 }

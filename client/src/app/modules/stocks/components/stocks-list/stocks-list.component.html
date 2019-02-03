@@ -1,7 +1,16 @@
 <div class="container ptb-2">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+        <div class="text-info h6">
+            Top Performer Stock : {{topPerformingCompany}}
+          </div>
+    </div>
+    
+    
+  </div>
 <div class="card">
-  <div class="card-header col-sm-12">
-    <div class="h5 text-center text-primary">STOCKS HISTORY</div>
+  <div class="card-header col-sm-12 text-center">
+    <div class="h5 text-info">STOCKS HISTORY</div>
   </div>
   <div class="card-body col-sm-12">
     <div class="table-responsive">
@@ -20,7 +29,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let stockInfo of stocksList | slice : (page - pageOffset*maxSize - 1) * itemsPerPage: (page - pageOffset * maxSize) * itemsPerPage ;">
-            <td>{{ stockInfo.company }}</td>
+            <td (click)="searchByCompany(stockInfo.company)" class="text-primary"><a href="javascript:void(0)">{{ stockInfo.company }}</a></td>
             <td>{{ stockInfo.date | date: 'MM/dd/yyyy' }}</td>
             <td>{{ stockInfo.high | number}}</td>
             <td>{{ stockInfo.low | number}}</td>

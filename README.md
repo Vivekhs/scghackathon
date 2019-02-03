@@ -24,9 +24,12 @@
       - For this app mongodb i have installed in local
       - DB URI is **mongodb://localhost:27017/scgdb**
       - this db has only one collection(stockshistory) where all the stocks records are stored
+    - DB Dump
+      - It is in root folder ***stockshistory.json***
   
 # Pending Items
 
 - ngRx store implementation
 - For pagination _id is used, change this to date after creating index in mongodb (approx. 8.5 Lacs records are there)
 - Unit test cases (Server side)
+- Add top performer API in route resolve, as top performer is not visible just after page load.

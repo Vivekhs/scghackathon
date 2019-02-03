@@ -18,6 +18,8 @@ export class StocksListComponent implements OnInit {
   maxSize = 3;
   collectionSize = (this.maxSize + 1) * (this.pageOffset + this.itemsPerPage);
   stockFetchReqData: StockFetch;
+  topPerformersList: Stock[];
+  topPerformingCompany: string;
   constructor(private stocksService: StocksService,
     private sharedService: SharedService) {
     this.stockFetchReqData = {
@@ -28,8 +30,11 @@ export class StocksListComponent implements OnInit {
 
     this.stocksService.findStocks(this.stockFetchReqData)
     .subscribe(res => {
-      console.log(res);
       this.stocksList = res;
+    });
+    this.stocksService.findTopPerformers().subscribe(topPerformers => {
+      this.topPerformersList = topPerformers;
+      this.topPerformingCompany = topPerformers[0].company;
     });
   }
   ngOnInit() {
@@ -68,6 +73,26 @@ export class StocksListComponent implements OnInit {
     this.collectionSize = this.itemsPerPage * (this.maxSize * (this.pageOffset + 1) + 1);
   }
 
+  searchByCompany(company) {
+    if (this.stockFetchReqData.company === company) {
+      return;
+    }
+    this.sharedService.showSpinner();
+    this.stockFetchReqData.company = company;
+    this.reset();
+    this.stocksService.findStocks(this.stockFetchReqData)
+    .subscribe(res => {
+      this.stocksList = res;
+      this.sharedService.hideSpinner();
+    });
+
+  }
+
+  reset() {
+    this.collectionSize = (this.maxSize + 1) * (this.pageOffset + this.itemsPerPage);
+    this.pageOffset = 0;
+    this.page = 1;
+  }
 
 
 
