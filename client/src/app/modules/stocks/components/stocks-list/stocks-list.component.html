@@ -1,0 +1,41 @@
+<div class="container ptb-2">
+<div class="card">
+  <div class="card-header col-sm-12">
+    <div class="h5 text-center text-primary">STOCKS HISTORY</div>
+  </div>
+  <div class="card-body col-sm-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">Company</th>
+            <th scope="col">Date</th>
+
+            <th scope="col">Highest</th>
+            <th scope="col">Lowest</th>
+            <th scope="col">Open</th>
+            <th scope="col">Close</th>
+            <th scope="col">Volume</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let stockInfo of stocksList | slice : (page - pageOffset*maxSize - 1) * itemsPerPage: (page - pageOffset * maxSize) * itemsPerPage ;">
+            <td>{{ stockInfo.company }}</td>
+            <td>{{ stockInfo.date | date: 'MM/dd/yyyy' }}</td>
+            <td>{{ stockInfo.high | number}}</td>
+            <td>{{ stockInfo.low | number}}</td>
+            <td>{{ stockInfo.open | number}}</td>
+            <td>{{ stockInfo.close | number}}</td>
+            <td>{{ stockInfo.volume | number}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+ <div class="card-footer col-sm-12">
+    <ngb-pagination class="d-flex justify-content-end" [ellipses]="false" [maxSize]="maxSize" [collectionSize]="collectionSize" [page]="page" (pageChange)="pageChanged($event)"></ngb-pagination>
+ </div>
+</div>
+</div>
+
+
