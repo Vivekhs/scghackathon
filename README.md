@@ -25,7 +25,7 @@
       - DB URI is **mongodb://localhost:27017/scgdb**
       - this db has only one collection(stockshistory) where all the stocks records are stored
     - DB Dump
-      - It is in root folder ***stockshistory.json***
+      - [DB Dump Url](https://1drv.ms/u/s!Ap67W8Xb6BNBgmtqoMqLttGgYn4f)
   
 # Pending Items
 
