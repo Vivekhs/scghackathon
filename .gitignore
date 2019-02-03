@@ -5,8 +5,8 @@ client/dist
 /tmp
 /out-tsc
 
-.vscode
-.vscode/*
+# .vscode
+# .vscode/*
 
 # dependencies
 /client/node_modules
